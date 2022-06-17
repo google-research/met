@@ -20,13 +20,13 @@ python3 train.py
 ```
 
 The following hyper-parameters are available for train.py :
-+ embed_dim : Embedding dimension
-+ ff_dim : Feed-Forward dimension
-+ num_heads : Number of heads
-+ model_depth_enc : Depth of Encoder/ Number of transformers in Encoder stack
-+ model_depth_dec : Depth of Decoder/ Number of transformers in Decoder stack
-+ mask_pct : Masking Percentage
-+ lr : Learning rate
++ **embed_dim** : Embedding dimension
++ **ff_dim** : Feed-Forward dimension
++ **num_heads** : Number of heads
++ **model_depth_enc** : Depth of Encoder/ Number of transformers in Encoder stack
++ **model_depth_dec** : Depth of Decoder/ Number of transformers in Decoder stack
++ **mask_pct** : Masking Percentage
++ **lr** : Learning rate
 
 Each of the above can be changed by adding --flag_name=flag_value to train.py
 
