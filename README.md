@@ -90,14 +90,14 @@ Pretrained models for FashionMNIST for optimal adversarial training setting is a
 
 ## Evaluation
 
-To evaluate my model on Saved Models on the saved models, run:
-
+To evaluate the saved MET-S model run
 ```eval
-python3 eval.py --model_path="./saved_models/fmnist_64_1_64_6_1_70_1e-05" --model_path_linear="./saved_models/fmnist_linear_64_1_64_6_1_70_1e-05" #For non-adversarial model
+python3 eval.py --model_path="./saved_models/fmnist_64_1_64_6_1_70_1e-05" --model_path_linear="./saved_models/fmnist_linear_64_1_64_6_1_70_1e-05"
 ```
 
+To evaluate the saved MET model run
 ```
-python3 eval.py --model_path="./saved_models/fmnist_adv_64_1_64_6_1_70_1e-05" --model_path_linear="./saved_models/fmnist_linear_adv_64_1_64_6_1_70_1e-05" #For adversarial model
+python3 eval.py --model_path="./saved_models/fmnist_adv_64_1_64_6_1_70_1e-05" --model_path_linear="./saved_models/fmnist_linear_adv_64_1_64_6_1_70_1e-05"
 ```
 
 By default results are written to **met.csv**.
