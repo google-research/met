@@ -3,7 +3,7 @@
 This repository is the official implementation of [MET](https://arxiv.org/abs/2206.08564).
 
 ```
-Note : This is not an officially supported Google product.
+Disclaimer : This is not an officially supported Google product.
 ```
 
 ![Architecture](./MET.png)
