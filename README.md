@@ -108,12 +108,12 @@ By default results are written to **met.csv**.
 
 ## Results
 
-The performance of our model across various datasets is shown below.
-
+### The performance of our model across various multi-class classification datasets is shown below.
+<br>
 <table>
 <thead>
   <tr>
-    <th></th>
+    <th>Type</th>
     <th>Methods</th>
     <th>FMNIST</th>
     <th>CIFAR10</th>
@@ -124,8 +124,8 @@ The performance of our model across various datasets is shown below.
 </thead>
 <tbody>
   <tr>
-    <td rowspan="4">Supervised Baseline</td>
-    <td>MLP Baseline</td>
+    <td rowspan="5">Supervised Baseline</td>
+    <td>MLP</td>
     <td>87.57 &pm; 0.13</td>
     <td>16.47 &pm; 0.23</td>
     <td>96.98 &pm; 0.1</td>
@@ -139,6 +139,14 @@ The performance of our model across various datasets is shown below.
     <td>97.62 &pm; 0.18</td>
     <td>64.94 &pm; 0.12</td>
     <td>84.6 &pm; 0.2</td>
+  </tr>
+  <tr>
+    <td>GBDT</td>
+    <td>88.71 &pm; 0.07</td>
+    <td>45.7 &pm;&nbsp;&nbsp;0.27</td>
+    <td>100 &pm; 0.0</td>
+    <td>72.96 &pm; 0.11</td>
+    <td>86.01 &pm; 0.06</td>
   </tr>
   <tr>
     <td>RF-G</td>
@@ -183,20 +191,167 @@ The performance of our model across various datasets is shown below.
   </tr>
   <tr>
     <td rowspan="2">Our Method</td>
-    <td>MET</td>
+    <td>MET-S</td>
     <td>90.90 &pm; 0.06</td>
-    <td>47.96&pm;0.1</td>
+    <td>47.96&nbsp;&nbsp;&pm;&nbsp;&nbsp;0.1</td>
     <td>98.98 &pm; 0.05</td>
     <td>74.13 &pm; 0.04</td>
-    <td>86.17&pm;0.08</td>
+    <td>86.17&nbsp;&nbsp;&pm;&nbsp;&nbsp;0.08</td>
   </tr>
   <tr>
-    <td>MET+</td>
-    <td>91.32 &pm; 0.08</td>
-    <td>47.92&pm;0.13</td>
-    <td>99.17&pm;0.04</td>
-    <td>76.68&pm;0.12</td>
+    <td>MET</td>
+    <td>91.68 &pm; 0.12</td>
+    <td>47.92&nbsp;&nbsp;&pm;&nbsp;&nbsp;0.13</td>
+    <td>99.17+-0.04</td>
+    <td>76.68&nbsp;&nbsp;&pm;&nbsp;&nbsp;0.12</td>
     <td>86.21 &pm; 0.05</td>
+  </tr>
+</tbody>
+</table>
+
+### The performance of our model across various binary classification datasets is shown below.
+<br>
+<table>
+<thead>
+  <tr>
+    <th>Datasets</th>
+    <th>Metric</th>
+    <th>MLP</th>
+    <th>RF</th>
+    <th>GBDT</th>
+    <th>RF-G</th>
+    <th>MET-R</th>
+    <th>DACL+</th>
+    <th>VIME</th>
+    <th>SubTab</th>
+    <th>MET</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td rowspan="2">Obesity</td>
+    <td>Accuracy</td>
+    <td>58.1 &pm; 0.07</td>
+    <td>65.99 &pm; 0.12</td>
+    <td>67.19 &pm; 0.04</td>
+    <td>58.39 &pm; 0.17</td>
+    <td>58.8 &pm; 0.59</td>
+    <td>62.34 &pm; 0.12</td>
+    <td>59.23 &pm; 0.17</td>
+    <td>67.48 &pm; 0.03</td>
+    <td>74.38 &pm; 0.13</td>
+  </tr>
+  <tr>
+    <td>AUROC</td>
+    <td>52.3 &pm; 0.12</td>
+    <td>64.36 &pm; 0.07</td>
+    <td>64.4 &pm; 0.05</td>
+    <td>54.45 &pm; 0.08</td>
+    <td>53.2 &pm; 0.18</td>
+    <td>61.18 &pm; 0.07</td>
+    <td>57.27 &pm; 0.21</td>
+    <td>64.92 &pm; 0.06</td>
+    <td>71.84 &pm; 0.15</td>
+  </tr>
+  <tr>
+    <td rowspan="2">Income</td>
+    <td>Accuracy</td>
+    <td>84.35 &pm; 0.11</td>
+    <td>84.6 &pm; 0.2</td>
+    <td>86.01 &pm; 0.06</td>
+    <td>85.57 &pm; 0.13</td>
+    <td>75.50 &pm; 0.04</td>
+    <td>85.99 &pm; 0.24</td>
+    <td>84.46 &pm; 0.03</td>
+    <td>84.41 &pm; 0.06</td>
+    <td>86.21 &pm; 0.05</td>
+  </tr>
+  <tr>
+    <td>AUROC</td>
+    <td>89.39 &pm; 0.2</td>
+    <td>91.53 &pm; 0.32</td>
+    <td>92.5 &pm; 0.08</td>
+    <td>90.09 &pm; 0.57</td>
+    <td>83.48 &pm; 0.23</td>
+    <td>89.01 &pm; 0.4</td>
+    <td>87.37 &pm; 0.07</td>
+    <td>88.95 &pm; 0.19</td>
+    <td>93.85 &pm; 0.33</td>
+  </tr>
+  <tr>
+    <td rowspan="2">Criteo</td>
+    <td>Accuracy</td>
+    <td>74.28 &pm; 0.32</td>
+    <td>71.09 &pm; 0.05</td>
+    <td>72.03 &pm; 0.03</td>
+    <td>74.62 &pm; 0.08</td>
+    <td>73.57 &pm; 0.12</td>
+    <td>69.82 &pm; 0.06</td>
+    <td>68.78 &pm; 0.13</td>
+    <td>73.02 &pm; 0.08</td>
+    <td>78.49 &pm; 0.05</td>
+  </tr>
+  <tr>
+    <td>AUROC</td>
+    <td>79.82 &pm; 0.17</td>
+    <td>77.57 &pm; 0.1</td>
+    <td>78.77 &pm; 0.04</td>
+    <td>80.32 &pm; 0.16</td>
+    <td>79.17 &pm; 0.17</td>
+    <td>75.32 &pm; 0.27</td>
+    <td>74.28 &pm; 0.39</td>
+    <td>76.57 &pm; 0.05</td>
+    <td>86.17 &pm; 0.2</td>
+  </tr>
+  <tr>
+    <td rowspan="2">Arrhythmia</td>
+    <td>Accuracy</td>
+    <td>59.7 &pm; 0.02</td>
+    <td>68.18 &pm; 0.02</td>
+    <td>69.79 &pm; 0.12</td>
+    <td>60.6 &pm; 0.05</td>
+    <td>51.67 &pm; 0.1</td>
+    <td>57.81 &pm; 0.47</td>
+    <td>56.06 &pm; 0.04</td>
+    <td>60.1 &pm; 0.1</td>
+    <td>81.25 &pm; 0.12</td>
+  </tr>
+  <tr>
+    <td>AUROC</td>
+    <td>72.23 &pm; 0.06</td>
+    <td>90.63 &pm; 0.08</td>
+    <td>92.19 &pm; 0.05</td>
+    <td>74.02 &pm; 0.12</td>
+    <td>58.36 &pm; 0.32</td>
+    <td>69.23 &pm; 0.98</td>
+    <td>67.03 &pm; 0.27</td>
+    <td>69.97 &pm; 0.07</td>
+    <td>98.75 &pm; 0.04</td>
+  </tr>
+  <tr>
+    <td rowspan="2">Thyroid</td>
+    <td>Accuracy</td>
+    <td>50 &pm; 0.0</td>
+    <td>94.94 &pm; 0.1</td>
+    <td>96.44 &pm; 0.07</td>
+    <td>50 &pm; 0.0</td>
+    <td>57.42 &pm; 0.37</td>
+    <td>60.03 &pm; 0.05</td>
+    <td>66.1 &pm; 0.19</td>
+    <td>59.9 &pm; 0.16</td>
+    <td>98.1 &pm; 0.08</td>
+  </tr>
+  <tr>
+    <td>AUROC</td>
+    <td>62.3 &pm; 0.12</td>
+    <td>99.62 &pm; 0.03</td>
+    <td>99.34 &pm; 0.02</td>
+    <td>52.65 &pm; 0.13</td>
+    <td>82.03 &pm; 0.26</td>
+    <td>86.63 &pm; 0.1</td>
+    <td>94.87 &pm; 0.03</td>
+    <td>88.93 &pm; 0.12</td>
+    <td>99.81 &pm; 0.09</td>
   </tr>
 </tbody>
 </table>
