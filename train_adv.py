@@ -294,14 +294,11 @@ def train_METModel(
             new_x = [x_adv_0, input_vars[1], input_vars[2], input_vars[3]]
             y_pred = model(input_vars, training=True)  # Forward pass
             y_pred_adv = model(new_x, training=True)  # Forward pass
-            loss_adv = loss_fn(y_true, tf.squeeze(y_pred_adv))
-            loss = loss_fn(y_true, tf.squeeze(y_pred))
+            loss = loss_fn(tf.concat([y_true,y_true], axis=0), tf.concat([tf.squeeze(y_pred_adv),tf.squeeze(y_pred)], axis=0))
         trainable_vars = model.trainable_variables
-        gradients_adv = tape.gradient(loss_adv, trainable_vars)
         gradients = tape.gradient(loss, trainable_vars)
-        optimizer.apply_gradients(zip(gradients_adv,model.trainable_variables))
         optimizer.apply_gradients(zip(gradients,model.trainable_variables))
-        return (tf.reduce_sum(loss)+tf.reduce_sum(loss_adv))/2
+        return tf.reduce_sum(loss)
 
     @tf.function
     def adv_step(input_vars, y_true, x_adv_0):
@@ -315,14 +312,11 @@ def train_METModel(
             new_x = [x_adv_0, input_vars[1], input_vars[2], input_vars[3]]
             y_pred = model(input_vars, training=True)  # Forward pass
             y_pred_adv = model(new_x, training=True)  # Forward pass
-            loss_adv = loss_fn(y_true, tf.squeeze(y_pred_adv))
-            loss = loss_fn(y_true, tf.squeeze(y_pred))
+            loss = loss_fn(tf.concat([y_true,y_true], axis=0), tf.concat([tf.squeeze(y_pred_adv),tf.squeeze(y_pred)], axis=0))
         trainable_vars = model.trainable_variables
-        gradients_adv = tape.gradient(loss_adv, trainable_vars)
         gradients = tape.gradient(loss, trainable_vars)
-        optimizer.apply_gradients(zip(gradients_adv,model.trainable_variables))
         optimizer.apply_gradients(zip(gradients,model.trainable_variables))
-        return (tf.reduce_sum(loss)+tf.reduce_sum(loss_adv))/2
+        return tf.reduce_sum(loss)
 
     @tf.function
     def test_step(input_vars, y_true):
