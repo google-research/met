@@ -349,7 +349,7 @@ def train_and_eval_met(model, maxlen,
     mlp_layer = tf.keras.layers.Flatten()(mlp_inp)
     mlp_layer = tf.keras.layers.Dense(5040, activation='relu')(mlp_layer)
     mlp_layer = tf.keras.layers.Dense(256, activation='relu')(mlp_layer)
-    mlp_pred = tf.keras.layers.Dense(10, activation='softmax')(mlp_layer)
+    mlp_pred = tf.keras.layers.Dense(FLAGS.num_classes, activation='softmax')(mlp_layer)
     mlp_model = tf.keras.Model(inputs=mlp_inp, outputs=mlp_pred)
     opt = tf.keras.optimizers.Adam(learning_rate=FLAGS.lr)
     if FLAGS.model_path_linear == '':
